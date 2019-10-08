@@ -31,7 +31,7 @@
     "zone.js": "0.6.26"
   },
   "devDependencies": {
-    "@types/core-js": "0.9.34",
+    "@types/core-js": "0.9.39",
     "@types/node": "6.0.46",
     "concurrently": "3.1.0",
     "lite-server": "2.2.2",
