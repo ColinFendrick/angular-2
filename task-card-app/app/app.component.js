@@ -21,6 +21,7 @@ var AppComponent = (function () {
     AppComponent.prototype.addTask = function () {
         var task = new task_1.Task(this.currentTask.content, this.currentTask.completed);
         this.tasks.push(task);
+        this.currentTask.content = null;
     };
     AppComponent = __decorate([
         core_1.Component({
