@@ -15,7 +15,7 @@ var CardComponent = (function () {
     CardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'card',
+            selector: 'app-card',
             templateUrl: 'card.component.html',
             styleUrls: ['card.component.css']
         }), 
