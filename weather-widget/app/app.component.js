@@ -14,8 +14,9 @@ var AppComponent = (function () {
     }
     AppComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'my-app',
-            template: '<h1>Weather widget</h1>'
+            template: "\n        <div class=\"container\">\n            <div class=\"col-xs-3\">\n                <weather-widget></weather-widget>\n            </div>\n        </div>\n    "
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
