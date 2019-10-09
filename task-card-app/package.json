@@ -1,7 +1,7 @@
 {
-    "name": "angular2-skeleton",
+    "name": "task-card-app",
     "version": "1.0.0",
-    "description": "Rascal's Angular2 Skeleton project",
+    "description": "Task Card App",
     "scripts": {
         "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
         "lite": "lite-server",
