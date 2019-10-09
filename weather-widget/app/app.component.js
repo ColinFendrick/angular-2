@@ -16,7 +16,8 @@ var AppComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'my-app',
-            template: "\n        <div class=\"container\">\n            <div class=\"col-xs-3\">\n                <weather-widget></weather-widget>\n            </div>\n        </div>\n    "
+            template: "\n        <div class=\"container\">\n            <div class=\"col-xs-8\">\n                <weather-widget></weather-widget>\n            </div>\n        </div>\n    ",
+            styles: ["\n        .container {\n            padding-top: 5rem;\n        }\n    "]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
