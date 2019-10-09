@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+import { Task } from '../model/task';
 
 @Component({
   moduleId: module.id,
@@ -6,4 +8,6 @@ import { Component } from '@angular/core';
   templateUrl: 'card.component.html',
   styleUrls: ['card.component.css']
 })
-export class CardComponent {}
+export class CardComponent {
+  @Input() task: Task;
+}
