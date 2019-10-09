@@ -23,7 +23,11 @@
   </div>
 
   <div class="row">
-    <app-card *ngFor="let task of tasks" [task]="task"></app-card>
+    <app-card
+      *ngFor="let task of tasks"
+      [task]="task"
+      (onDelete)="execOnDelete($event)"
+    ></app-card>
     <h5 *ngIf="!tasks.length">
       <p>The task list is empty</p>
       <p>Add new tasks using the form above</p>

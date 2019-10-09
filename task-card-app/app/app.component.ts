@@ -11,11 +11,26 @@ import { Task } from './model/task';
 export class AppComponent {
     private tasks: Task[] = [];
 
-    private currentTask = new Task(null, false);
+    private currentTask = new Task(null, false, this.tasks.length);
 
     addTask():void {
-        let task = new Task(this.currentTask.content, this.currentTask.completed);
+        let task = new Task(
+            this.currentTask.content,
+            this.currentTask.completed,
+            this.currentTask.id
+        );
         this.tasks.push(task);
-        this.currentTask.content = null;
+        this.currentTask = new Task(null, false, this.tasks.length);
+    }
+
+    deleteTask(id: number):void {
+        console.log(
+            this.tasks.find(task => task.id === id)
+        )
+    }
+
+    execOnDelete($event: any):void {
+        const taskIdToRemove = this.tasks.findIndex(({ id }) => id === $event);
+        this.tasks.splice(taskIdToRemove, 1);
     }
 }

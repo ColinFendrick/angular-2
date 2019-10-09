@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Task } from '../model/task';
 
@@ -10,8 +10,13 @@ import { Task } from '../model/task';
 })
 export class CardComponent {
   @Input() task: Task;
+  @Output() onDelete = new EventEmitter();
 
   statusToggle():void {
     this.task.completed = !this.task.completed;
+  }
+
+  deleteTask():void {
+    this.onDelete.emit(this.task.id);
   }
 }

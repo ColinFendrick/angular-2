@@ -12,14 +12,22 @@ var core_1 = require('@angular/core');
 var task_1 = require('../model/task');
 var CardComponent = (function () {
     function CardComponent() {
+        this.onDelete = new core_1.EventEmitter();
     }
     CardComponent.prototype.statusToggle = function () {
         this.task.completed = !this.task.completed;
+    };
+    CardComponent.prototype.deleteTask = function () {
+        this.onDelete.emit(this.task.id);
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', task_1.Task)
     ], CardComponent.prototype, "task", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], CardComponent.prototype, "onDelete", void 0);
     CardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
