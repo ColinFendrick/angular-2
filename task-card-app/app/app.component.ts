@@ -23,12 +23,6 @@ export class AppComponent {
         this.currentTask = new Task(null, false, this.tasks.length);
     }
 
-    deleteTask(id: number):void {
-        console.log(
-            this.tasks.find(task => task.id === id)
-        )
-    }
-
     execOnDelete($event: any):void {
         const taskIdToRemove = this.tasks.findIndex(({ id }) => id === $event);
         this.tasks.splice(taskIdToRemove, 1);

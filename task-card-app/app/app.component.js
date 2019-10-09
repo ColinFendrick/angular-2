@@ -20,9 +20,6 @@ var AppComponent = (function () {
         this.tasks.push(task);
         this.currentTask = new task_1.Task(null, false, this.tasks.length);
     };
-    AppComponent.prototype.deleteTask = function (id) {
-        console.log(this.tasks.find(function (task) { return task.id === id; }));
-    };
     AppComponent.prototype.execOnDelete = function ($event) {
         var taskIdToRemove = this.tasks.findIndex(function (_a) {
             var id = _a.id;
