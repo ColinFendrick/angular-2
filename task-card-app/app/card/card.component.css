@@ -22,3 +22,7 @@ i {
   color: #cc0000;
   padding-right: 0.5rem;
 }
+
+i.completed {
+  color: rgba(32, 120, 8, 0.38);
+}

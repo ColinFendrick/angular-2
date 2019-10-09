@@ -5,7 +5,13 @@
     </div>
 
     <div class="card-footer">
-      <i class="fa fa-times" aria-hidden="true"></i>Not Complete
+      <span *ngIf="!task.completed">
+        <i class="fa fa-times" aria-hidden="true"></i>Not Complete
+      </span>
+
+      <span *ngIf="task.completed">
+        <i class="fa fa-check" [class.completed]="task.completed"></i>Completed
+      </span>
     </div>
   </div>
 </div>
