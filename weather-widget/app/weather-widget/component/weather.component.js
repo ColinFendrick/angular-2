@@ -44,8 +44,12 @@ var WeatherComponent = (function () {
         }, function (err) { return console.error(err); });
     };
     WeatherComponent.prototype.getLocationName = function () {
+        var _this = this;
         this.service.getLocationName(this.pos.coords.latitude, this.pos.coords.longitude)
-            .subscribe(function (res) { return console.log(res); }, function (err) { return console.error(err); });
+            .subscribe(function (_a) {
+            var results = _a.results;
+            return _this.currentLocation = results[1].formatted_address;
+        }, function (err) { return console.error(err); });
     };
     WeatherComponent = __decorate([
         core_1.Component({

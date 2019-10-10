@@ -4,7 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { FORECAST_KEY, FORECAST_ROOT, GOOGLE_KEY, GOOGLE_ROOT } from '../constants/constants';
+import { FORECAST_KEY, FORECAST_ROOT, GOOGLE_ROOT } from '../constants/constants';
+// To use this, you must get a google api key and put it in this file
+import { GOOGLE_KEY } from '../constants/private.private';
 
 @Injectable()
 export class WeatherService {
@@ -16,7 +18,7 @@ export class WeatherService {
         navigator.geolocation.getCurrentPosition(pos => { observer.next(pos) }),
           err => Observable.throw(err);
       });
-    } else {
+  } else {
       return Observable.throw('Geolocation is not available');
     }
   }

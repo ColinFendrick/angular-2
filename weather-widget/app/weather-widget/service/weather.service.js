@@ -14,6 +14,8 @@ var Observable_1 = require('rxjs/Observable');
 require('rxjs/add/operator/map');
 require('rxjs/add/operator/catch');
 var constants_1 = require('../constants/constants');
+// To use this, you must get a google api key and put it in this file
+var private_private_1 = require('../constants/private.private');
 var WeatherService = (function () {
     function WeatherService(jsonp, http) {
         this.jsonp = jsonp;
@@ -41,7 +43,7 @@ var WeatherService = (function () {
         });
     };
     WeatherService.prototype.getLocationName = function (lat, long) {
-        var url = constants_1.GOOGLE_ROOT + "?latlng=" + lat + "," + long + "&key=" + constants_1.GOOGLE_KEY;
+        var url = constants_1.GOOGLE_ROOT + "?latlng=" + lat + "," + long + "&key=" + private_private_1.GOOGLE_KEY;
         return this.http.get(url)
             .map(function (loc) { return loc.json(); })
             .catch(function (err) {
