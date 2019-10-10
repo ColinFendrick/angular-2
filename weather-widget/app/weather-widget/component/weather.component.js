@@ -18,6 +18,7 @@ var WeatherComponent = (function () {
         this.currentSpeedUnit = 'mph';
         this.currentTempUnit = 'fahrenheit';
         this.currentLocation = '';
+        this.icons = new Skycons({ 'color': '#fff' });
     }
     WeatherComponent.prototype.ngOnInit = function () {
         this.getCurrentLocation();
@@ -41,6 +42,7 @@ var WeatherComponent = (function () {
             _this.weatherData.wind = currently.windSpeed;
             _this.weatherData.humidity = currently.humidity;
             _this.weatherData.icon = currently.icon;
+            _this.setIcon();
         }, function (err) { return console.error(err); });
     };
     WeatherComponent.prototype.getLocationName = function () {
@@ -70,6 +72,10 @@ var WeatherComponent = (function () {
         else {
             this.currentSpeedUnit = 'mph';
         }
+    };
+    WeatherComponent.prototype.setIcon = function () {
+        this.icons.add('icon', this.weatherData.icon);
+        this.icons.play();
     };
     WeatherComponent = __decorate([
         core_1.Component({

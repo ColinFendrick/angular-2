@@ -3,6 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../service/weather.service';
 import { Weather } from '../model/weather';
 
+// Hacky workaround cause theres no ts definition
+// file for Skycons out in the wild
+// and I don't want my IDE to yell at me
+declare var Skycons: any;
+
 @Component({
   moduleId: module.id,
   selector: 'weather-widget',
@@ -16,14 +21,15 @@ export class WeatherComponent implements OnInit {
   currentSpeedUnit = 'mph';
   currentTempUnit = 'fahrenheit';
   currentLocation = '';
+  icons = new Skycons({ 'color': '#fff' });
 
   constructor(private service: WeatherService) {}
 
-  ngOnInit() {
+  ngOnInit():void {
     this.getCurrentLocation();
   }
 
-  getCurrentLocation() {
+  getCurrentLocation():void {
     this.service.getCurrentLocation()
       .subscribe(position => {
         this.pos = position;
@@ -33,7 +39,7 @@ export class WeatherComponent implements OnInit {
         err => console.error(err));
   }
 
-  getCurrentWeather() {
+  getCurrentWeather():void {
     this.service.getCurrentWeather(this.pos.coords.latitude, this.pos.coords.longitude)
       .subscribe(
         ({ currently }) => {
@@ -42,12 +48,13 @@ export class WeatherComponent implements OnInit {
           this.weatherData.wind = currently.windSpeed;
           this.weatherData.humidity = currently.humidity;
           this.weatherData.icon = currently.icon;
+          this.setIcon();
         },
         err => console.error(err)
       );
   }
 
-  getLocationName() {
+  getLocationName():void {
     this.service.getLocationName(this.pos.coords.latitude, this.pos.coords.longitude)
       .subscribe(
         ({ results }) => this.currentLocation = results[7].formatted_address,
@@ -55,18 +62,23 @@ export class WeatherComponent implements OnInit {
       );
   }
 
-  toggleUnits() {
+  toggleUnits():void {
     this.toggleTempUnits();
     this.toggleSpeedUnits();
   }
 
-  toggleTempUnits() {
+  toggleTempUnits():void {
     if (this.currentTempUnit === 'fahrenheit') { this.currentTempUnit = 'celsius'; }
     else { this.currentTempUnit = 'fahrenheit'; }
   }
 
-  toggleSpeedUnits() {
+  toggleSpeedUnits():void {
     if (this.currentSpeedUnit === 'mph') { this.currentSpeedUnit = 'kph'; }
     else { this.currentSpeedUnit = 'mph'; }
+  }
+
+  setIcon():void {
+    this.icons.add('icon', this.weatherData.icon);
+    this.icons.play();
   }
 }
