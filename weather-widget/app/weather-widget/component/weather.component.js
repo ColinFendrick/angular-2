@@ -16,7 +16,8 @@ var WeatherComponent = (function () {
         this.service = service;
         this.weatherData = new weather_1.Weather(null, null, null, null, null);
         this.currentSpeedUnit = 'mph';
-        this.currentTempUnit = 'farenheit';
+        this.currentTempUnit = 'fahrenheit';
+        this.currentLocation = '';
     }
     WeatherComponent.prototype.ngOnInit = function () {
         this.getCurrentLocation();
@@ -27,6 +28,7 @@ var WeatherComponent = (function () {
             .subscribe(function (position) {
             _this.pos = position;
             _this.getCurrentWeather();
+            _this.getLocationName();
         }, function (err) { return console.error(err); });
     };
     WeatherComponent.prototype.getCurrentWeather = function () {
@@ -40,6 +42,10 @@ var WeatherComponent = (function () {
             _this.weatherData.humidity = currently.humidity;
             _this.weatherData.icon = currently.icon;
         }, function (err) { return console.error(err); });
+    };
+    WeatherComponent.prototype.getLocationName = function () {
+        this.service.getLocationName(this.pos.coords.latitude, this.pos.coords.longitude)
+            .subscribe(function (res) { return console.log(res); }, function (err) { return console.error(err); });
     };
     WeatherComponent = __decorate([
         core_1.Component({
