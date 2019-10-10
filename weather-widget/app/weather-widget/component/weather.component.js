@@ -37,7 +37,6 @@ var WeatherComponent = (function () {
             _this.weatherData.wind = currently.windSpeed;
             _this.weatherData.humidity = currently.humidity;
             _this.weatherData.icon = currently.icon;
-            console.log(_this.weatherData);
         }, function (err) { return console.error(err); });
     };
     WeatherComponent = __decorate([

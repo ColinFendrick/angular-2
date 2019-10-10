@@ -38,7 +38,6 @@ export class WeatherComponent implements OnInit {
           this.weatherData.wind = currently.windSpeed;
           this.weatherData.humidity = currently.humidity;
           this.weatherData.icon = currently.icon;
-          console.log(this.weatherData)
         },
         err => console.error(err)
       );
