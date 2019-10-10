@@ -51,6 +51,26 @@ var WeatherComponent = (function () {
             return _this.currentLocation = results[7].formatted_address;
         }, function (err) { return console.error(err); });
     };
+    WeatherComponent.prototype.toggleUnits = function () {
+        this.toggleTempUnits();
+        this.toggleSpeedUnits();
+    };
+    WeatherComponent.prototype.toggleTempUnits = function () {
+        if (this.currentTempUnit === 'fahrenheit') {
+            this.currentTempUnit = 'celsius';
+        }
+        else {
+            this.currentTempUnit = 'fahrenheit';
+        }
+    };
+    WeatherComponent.prototype.toggleSpeedUnits = function () {
+        if (this.currentSpeedUnit === 'mph') {
+            this.currentSpeedUnit = 'kph';
+        }
+        else {
+            this.currentSpeedUnit = 'mph';
+        }
+    };
     WeatherComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

@@ -16,11 +16,11 @@ var SpeedUnitPipe = (function () {
         switch (unitType) {
             case 'mph':
                 var miles = (speed * 1.6);
-                return miles.toFixed(2) + " mph";
+                return (miles && miles.toFixed(0)) + " mph";
             case 'kph':
-                return speed.toFixed(2) + " kph";
+                return (speed && speed.toFixed(0)) + " kph";
             default:
-                return speed.toFixed(2) + " kph";
+                return (speed && speed.toFixed(0)) + " kph";
         }
     };
     SpeedUnitPipe = __decorate([
