@@ -20,6 +20,7 @@ var WeatherComponent = (function () {
         this.currentTempUnit = 'fahrenheit';
         this.currentLocation = '';
         this.icons = new Skycons();
+        this.dataReceived = false;
     }
     WeatherComponent.prototype.ngOnInit = function () {
         this.getCurrentLocation();
@@ -44,6 +45,7 @@ var WeatherComponent = (function () {
             _this.weatherData.humidity = currently.humidity;
             _this.weatherData.icon = currently.icon;
             _this.setIcon();
+            _this.dataReceived = true;
         }, function (err) { return console.error(err); });
     };
     WeatherComponent.prototype.getLocationName = function () {
@@ -76,7 +78,6 @@ var WeatherComponent = (function () {
     };
     WeatherComponent.prototype.setIcon = function () {
         this.icons.add('icon', this.weatherData.icon);
-        console.log(this.weatherData.icon);
         this.icons.play();
     };
     WeatherComponent.prototype.setStyles = function () {
